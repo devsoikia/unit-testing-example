@@ -1,0 +1,58 @@
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+
+const App = () => {
+  const chapters = [
+    { id: 1, title: 'राजविद्या राजगुह्य योग', verses: 23 },
+    { id: 2, title: 'विभूति योग', verses: 40 },
+    // ... other chapters
+  ];
+
+  const renderChapter = (chapter) => (
+    <TouchableOpacity key={chapter.id} onPress={() => handleChapterPress(chapter)}>
+      <View style={styles.chapterContainer}>
+        <Text style={styles.chapterTitle}>{chapter.title}</Text>
+        <Text style={styles.versesCount}>{chapter.verses} श्लोको</Text>
+        <Text style={styles.arrow}> > </Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  const handleChapterPress = (chapter) => {
+    // Navigate to the chapter details screen
+    // ...
+  };
+
+  return (
+    <View style={styles.container}>
+      {chapters.map(renderChapter)}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  chapterContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  chapterTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  versesCount: {
+    fontSize: 16,
+  },
+  arrow: {
+    fontSize: 20,
+  },
+});
+
+export default App;
